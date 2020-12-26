@@ -1,13 +1,17 @@
 from lexer import Lexer
-from rules import Rulebook, NumberRule, OperatorRule
+from rules import *
 
 def main():
-    rules = [NumberRule(), OperatorRule()]
+    rules = [
+        NumberRule(),
+        OperatorRule(),
+        BreakRule([" "])
+    ]
     rulebook = Rulebook(rules)
     lexer = Lexer(rulebook)
 
     try:
-        tokens = lexer.lex("100+100")
+        tokens = lexer.lex("100-----")
         print(tokens)
     except Exception as e:
         print(e)

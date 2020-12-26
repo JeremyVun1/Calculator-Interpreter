@@ -1,3 +1,5 @@
+from tokens import BreakToken
+
 class Lexer:
 
     def __init__(self, rulebook):
@@ -41,6 +43,10 @@ class Lexer:
         # get any remaining token
         if not self.rulebook.is_exhausted():
             self.add_token(self.rulebook)
+
+        for i in reversed(range(0, len(self.tokens))):
+            if type(self.tokens[i]) == BreakToken:
+                self.tokens.pop(i)
 
         return self.tokens
 

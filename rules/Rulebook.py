@@ -1,5 +1,5 @@
 class Rulebook:
-    skip = [" "]
+    break_symbols = [" "]
 
     def __init__(self, rules):
         self.rules = rules
@@ -13,9 +13,6 @@ class Rulebook:
         return True
 
     def parse(self, char):
-        if char in self.skip:
-            return
-
         for rule in self.rules:
             rule.parse(char)
 
