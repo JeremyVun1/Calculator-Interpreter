@@ -1,10 +1,8 @@
-parser
-    - create tokens
-lexer
-    - create AST
-        - token typing
-    - validate
-evaluator
-    - evaluate AST
-        - visitor pattern
-        - ruleset is here and applied
+# Lexer
+parse line into an AST
+
+# Evaluator
+AST evaluated using custom rules via visitor pattern.
+
+# UI
+Console wrapper
