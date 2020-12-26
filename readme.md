@@ -1,5 +1,16 @@
 # Lexer
-parse line into an AST
+parse text string into an AST. Longest standing rule match applies, conflicts resolve to the rule that is added last
+```
+rules = [
+    NumberRule(),
+    OperatorRule(),
+    BreakRule([" "])
+]
+rulebook = Rulebook(rules)
+lexer = Lexer(rulebook)
+
+tokens = lexer.lex("100 + 100")
+```
 
 # Evaluator
 AST evaluated using custom rules via visitor pattern.
