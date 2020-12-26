@@ -14,6 +14,11 @@ tokens = lexer.lex("100 + 100")
 
 # Evaluator
 AST evaluated using custom rules via visitor pattern.
+```
+tokens = lexer.lex("100 + 100")
+
+result = CalculatorEvaluator(tokens)
+```
 
 # UI
 Console wrapper
