@@ -21,9 +21,7 @@ class Lexer:
                     i -= 1
                 else:
                     raise Exception(f"cannot parse '{c}' at pos {i}")
-
             i += 1
-                
 
         # get any remaining token
         if not self.rulebook.is_exhausted():
