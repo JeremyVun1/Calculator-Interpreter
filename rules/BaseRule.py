@@ -7,12 +7,19 @@ class BaseRule:
 
     @abstractmethod
     def validate(self, char):
-        return True
+        raise NotImplementedError("validate not implemented")
 
     def parse(self, char):
-        if self.validate(self.state + char):
-            self.state += char
-        else self.is_alive = False
+        new_state = self.state + char
+        if self.validate(new_state):
+            self.state = new_state
+        else:
+            self.is_alive = False
 
     def reset(self):
         self.state = ""
+        self.is_alive = True
+
+    @abstractmethod
+    def get_token(self):
+        raise NotImplementedError("get_token not implemented")

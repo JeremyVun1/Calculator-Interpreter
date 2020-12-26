@@ -1,11 +1,18 @@
-import BaseRule
+from .BaseRule import BaseRule
+from tokens import *
 
 class OperatorRule(BaseRule):
 
-    valid_symbols = ["+", "-", "/", "*"]
+    valid_symbols = {
+        "+": AddToken,
+        "-": SubtractToken,
+        "/": DivideToken,
+        "*": MultiplyToken
+    }
 
     # validate that token is still a number
     def validate(self, new_state):
-        if self.valid_symbols.contains(new_state):
-            self.state = new_state
-        else self.is_alive = False
+        return new_state in self.valid_symbols
+
+    def get_token(self):
+        return self.valid_symbols[self.state]()
