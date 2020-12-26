@@ -1,9 +1,8 @@
 from lexer import Lexer
-from rules.Rulebook import Rulebook
-from rules import NumberRule, OperatorRule
+from rules import Rulebook, NumberRule, OperatorRule
 
 def main():
-    rules = [NumberRule.NumberRule(), OperatorRule.OperatorRule()]
+    rules = [NumberRule(), OperatorRule()]
     rulebook = Rulebook(rules)
     lexer = Lexer(rulebook)
 
