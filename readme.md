@@ -13,7 +13,7 @@ tokens = lexer.lex("100 + 100")
 ```
 
 # Evaluator
-AST evaluated using custom rules via visitor pattern.
+AST syntax validated and evaluated using custom rules via visitor pattern.
 ```
 tokens = lexer.lex("100 + 100")
 
