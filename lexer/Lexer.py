@@ -17,6 +17,7 @@ class Lexer:
 
             # get longest living token
             if self.rulebook.is_exhausted():
+                # rewind index one step if the rule exhaustion resulted in a token being created
                 if self.add_token(self.rulebook):
                     i -= 1
                 else:
