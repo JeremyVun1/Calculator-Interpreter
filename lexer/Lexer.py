@@ -1,31 +1,16 @@
 from tokens import BreakToken
 
 class Lexer:
-
     def __init__(self, rulebook):
         self.rulebook = rulebook
         self.rulebook.reset()
         self.tokens = []
 
-    def get_token(self, rulebook):
-        rule = self.rulebook.last_valid_rule
-        if rule:
-            return rule.get_token()
-        else:
-            return None
 
-    def add_token(self, rulebook):
-        token = self.get_token(self.rulebook)
-        self.rulebook.reset()
-        if token:
-            self.tokens.append(token)
-            return True
-        else:
-            return False
-
-    def parse(self, line):
+    def lex(self, line):
         i = 0
 
+        # SCAN
         while i < len(line):
             c = line[i]
             self.rulebook.parse(c)
@@ -44,18 +29,31 @@ class Lexer:
         if not self.rulebook.is_exhausted():
             self.add_token(self.rulebook)
 
+        # remove break tokens
         for i in reversed(range(0, len(self.tokens))):
             if type(self.tokens[i]) == BreakToken:
                 self.tokens.pop(i)
 
         return self.tokens
 
-    def lex(self, line):
-        tokens = self.parse(line)
-        return tokens
-        
-        # create AST from tokens
-        # do not apply RPN or anything here. RPN is the responsibility of the evaluator module
+
+    def get_token(self, rulebook):
+        rule = self.rulebook.last_valid_rule
+
+        if rule:
+            return rule.get_token()
+        return None
+
+
+    def add_token(self, rulebook):
+        token = self.get_token(self.rulebook)
+        self.rulebook.reset()
+
+        if token:
+            self.tokens.append(token)
+            return True
+        return False
+
 
     def reset(self):
         self.tokens = []
