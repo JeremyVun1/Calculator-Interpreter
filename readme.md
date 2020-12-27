@@ -16,9 +16,10 @@ tokens = lexer.lex("100 + 100")
 AST syntax validated and evaluated using custom rules via visitor pattern.
 ```
 tokens = lexer.lex("100 + 100")
+calculator = Evaluator(CalculatorVisitor())
 
-result = CalculatorEvaluator().evaluate(tokens)
+result = calculator.evaluate(tokens)
 ```
 
 # UI
-Console wrapper
+python main.py

@@ -10,7 +10,8 @@ class CalculatorVisitor(BaseVisitor):
         self.rpn_ast = []
 
         self.precedence = {
-            BracketToken: 0,
+            OpenBracketToken: 0,
+            CloseBracketToken: 0,
             AddToken: 1,
             SubtractToken: 1,
             MultiplyToken: 2,
@@ -23,7 +24,7 @@ class CalculatorVisitor(BaseVisitor):
         if self.last_token_is_num:
             return isinstance(token, OperatorToken)
         else:
-            return isinstance(token, NumberToken)
+            return isinstance(token, NumberToken) or isinstance(token, BracketToken)
 
     # construct the AST in RPN notation
     def visit(self, token):
@@ -40,8 +41,6 @@ class CalculatorVisitor(BaseVisitor):
             self.last_token_is_num = True
 
         elif isinstance(token, OperatorToken):
-            self.last_token_is_num = False
-            
             #####
             # Just put open brackets on the stack
             #####
@@ -67,17 +66,21 @@ class CalculatorVisitor(BaseVisitor):
                 # clear the stack to the AST if token is lower precedence
                 #####
                 else:
+                    self.last_token_is_num = False
                     while len(self.stack) and self.precedence[type(token)] < self.precedence[type(top)]:
                         self.rpn_ast.append(self.stack.pop())
                         top = self.stack[-1]
                     self.stack.append(token)
             else:
+                self.last_token_is_num = False
                 self.stack.append(token)
 
     
     def evaluate(self):
         while (len(self.stack)):
             self.rpn_ast.append(self.stack.pop())
+
+        print(self.rpn_ast)
 
         eval_stack = []
         if len(self.rpn_ast):

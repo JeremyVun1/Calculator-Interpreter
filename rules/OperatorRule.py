@@ -7,7 +7,9 @@ class OperatorRule(BaseRule):
         "+": AddToken,
         "-": SubtractToken,
         "/": DivideToken,
-        "*": MultiplyToken
+        "*": MultiplyToken,
+        "(": OpenBracketToken,
+        ")": CloseBracketToken
     }
 
     # validate that token is still a number
