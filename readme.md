@@ -28,3 +28,8 @@ calculator = Evaluator(CalculatorVisitor())
 
 result = calculator.evaluate(tokens)
 ```
+
+## Tests
+```
+pytest
+```
