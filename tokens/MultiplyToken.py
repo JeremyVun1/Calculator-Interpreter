@@ -1,5 +1,9 @@
-from .BaseToken import BaseToken
+from .OperatorToken import OperatorToken
+from .NumberToken import NumberToken
 
-class MultiplyToken(BaseToken):
+class MultiplyToken(OperatorToken):
     def __init__(self):
         super().__init__("*")
+
+    def evaluate(self, x, y):
+        return NumberToken(x.value * y.value)

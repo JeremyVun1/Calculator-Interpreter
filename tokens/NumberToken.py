@@ -1,4 +1,5 @@
 from .BaseToken import BaseToken
 
 class NumberToken(BaseToken):
-    pass
+    def __init__(self, value):
+        super().__init__(float(value))

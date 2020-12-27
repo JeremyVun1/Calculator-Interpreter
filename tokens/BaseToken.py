@@ -1,3 +1,6 @@
 class BaseToken:
-    def __init__(self, state):
-        self.state = state
+    def __init__(self, value):
+        self.value = value
+
+    def accept(self, visitor):
+        visitor.visit(self)
