@@ -16,6 +16,7 @@ class CalculatorVisitor(BaseVisitor):
             SubtractToken: 1,
             MultiplyToken: 2,
             DivideToken: 2,
+            PowerToken: 3
         }
 
         self.pos = 0
@@ -66,11 +67,13 @@ class CalculatorVisitor(BaseVisitor):
                 # clear the stack to the AST if token is lower precedence
                 #####
                 else:
-                    self.last_token_is_num = False
                     while len(self.stack) and self.precedence[type(token)] < self.precedence[type(top)]:
                         self.rpn_ast.append(self.stack.pop())
-                        top = self.stack[-1]
+                        if len(self.stack):
+                            top = self.stack[-1]
+
                     self.stack.append(token)
+                    self.last_token_is_num = False
             else:
                 self.last_token_is_num = False
                 self.stack.append(token)
@@ -79,8 +82,6 @@ class CalculatorVisitor(BaseVisitor):
     def evaluate(self):
         while (len(self.stack)):
             self.rpn_ast.append(self.stack.pop())
-
-        print(self.rpn_ast)
 
         eval_stack = []
         if len(self.rpn_ast):
