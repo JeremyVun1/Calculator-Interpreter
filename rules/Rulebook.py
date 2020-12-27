@@ -1,6 +1,4 @@
 class Rulebook:
-    break_symbols = [" "]
-
     def __init__(self, rules):
         self.rules = rules
         self.last_valid_rule = None
