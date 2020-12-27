@@ -13,7 +13,7 @@ class OperatorRule(BaseRule):
         "^": PowerToken
     }
 
-    # validate that token is still a number
+    # validate that token is a valid symbol
     def validate(self, new_state):
         return new_state in self.valid_symbols
 
