@@ -27,7 +27,9 @@ def test_calculator_invalid(lexer):
         "*100+100",
         "",
         ")"
-        "100+100)"
+        "100+100)",
+        "1?100",
+        "3^^2"
     ]
     for test_line in tests:
         with pytest.raises(Exception):
