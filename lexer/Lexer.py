@@ -3,8 +3,7 @@ from tokens import BreakToken
 class Lexer:
     def __init__(self, rulebook):
         self.rulebook = rulebook
-        self.rulebook.reset()
-        self.tokens = []
+        self.reset()
 
 
     def lex(self, line):
@@ -33,7 +32,9 @@ class Lexer:
             if type(self.tokens[i]) == BreakToken:
                 self.tokens.pop(i)
 
-        return self.tokens
+        result = self.tokens
+        self.reset()
+        return result
 
 
     def get_token(self, rulebook):
@@ -55,4 +56,5 @@ class Lexer:
 
 
     def reset(self):
+        self.rulebook.reset()
         self.tokens = []

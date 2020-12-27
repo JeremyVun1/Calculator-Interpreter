@@ -5,9 +5,7 @@ from tokens import *
 class CalculatorVisitor(BaseVisitor):
 
     def __init__(self):
-        self.last_token_is_num = False
-        self.stack = []
-        self.rpn_ast = []
+        self.reset()
 
         self.precedence = {
             OpenBracketToken: 0,
@@ -18,8 +16,6 @@ class CalculatorVisitor(BaseVisitor):
             DivideToken: 2,
             PowerToken: 3
         }
-
-        self.pos = 0
 
     def valid_token(self, token):
         if self.last_token_is_num:
@@ -96,3 +92,9 @@ class CalculatorVisitor(BaseVisitor):
             return eval_stack.pop().value
         else:
             return 0
+
+    def reset(self):
+        self.last_token_is_num = False
+        self.stack = []
+        self.rpn_ast = []
+        self.pos = 0

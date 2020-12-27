@@ -1,8 +1,6 @@
-from evaluators.visitors.CalculatorVisitor import CalculatorVisitor
-from evaluators.Evaluator import Evaluator
 from lexer import Lexer
 from rules import *
-from evaluators import *
+from evaluator import *
 
 from tokens import *
 

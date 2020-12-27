@@ -10,3 +10,7 @@ class BaseVisitor:
     @abstractmethod
     def visit(self, token):
         print(token.value)
+
+    @abstractmethod
+    def reset(self):
+        raise NotImplementedError("Visitor Reset not implemented")

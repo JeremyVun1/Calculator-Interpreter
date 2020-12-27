@@ -6,4 +6,6 @@ class Evaluator():
         for token in tokens:
             token.accept(self.visitor)
 
-        return self.visitor.evaluate()
+        result = self.visitor.evaluate()
+        self.visitor.reset()
+        return result
