@@ -7,7 +7,7 @@ python main.py
 ```
 
 ## Lexer
-parse text string into an AST. Longest standing rule match applies, conflicts resolve to the rule that is added last
+parse text string into an AST according to custom syntax rules. Longest standing rule match applies, conflicts resolve to the rule that is added last in the rule list
 ```
 rules = [
     NumberRule(),
