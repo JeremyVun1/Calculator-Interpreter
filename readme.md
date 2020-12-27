@@ -3,6 +3,7 @@ Tokenize arithmetic strings into AST using extensible rulesets and evaluate usin
 ```
 python main.py
 : 1+1
+: 2
 ```
 
 ## Lexer
