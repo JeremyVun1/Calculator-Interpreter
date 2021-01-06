@@ -1,5 +1,4 @@
 # Calculator Interpreter
-Tokenize arithmetic strings into AST using extensible rulesets and evaluate using a custom visitor
 ```
 python main.py
 : 1+1
